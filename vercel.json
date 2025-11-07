@@ -1,3 +1,5 @@
 {
-  "rewrites": [{ "source": "/detail", "destination": "/detail-page.html" }]
+  "rewrites": [
+    { "source": "/detail/:id", "destination": "/detail-page.html" }
+  ]
 }
