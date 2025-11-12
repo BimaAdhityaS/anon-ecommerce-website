@@ -59,11 +59,6 @@ if (registerForm) {
       return;
     }
     
-    if (!formProps.terms) {
-      alert('Please accept the Terms & Conditions');
-      return;
-    }
-    
     // Here you would typically send the data to your backend
     console.log('Registration data:', {
       fullname: formProps.fullname,
