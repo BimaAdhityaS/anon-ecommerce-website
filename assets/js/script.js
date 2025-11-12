@@ -12,6 +12,89 @@ const modalCloseFunc = function () { modal.classList.add('closed') }
 modalCloseOverlay.addEventListener('click', modalCloseFunc);
 modalCloseBtn.addEventListener('click', modalCloseFunc);
 
+// registration modal variables
+const registerBtn = document.getElementById('action-register');
+const registerModal = document.getElementById('register-modal');
+const registerCloseBtn = registerModal?.querySelector('[data-modal-close]');
+const registerCloseOverlay = registerModal?.querySelector('[data-modal-overlay]');
+const registerForm = document.getElementById('register-form');
+
+// registration modal functionality
+if (registerBtn && registerModal) {
+  const registerModalCloseFunc = function () { 
+    registerModal.classList.add('closed');
+    overlay.classList.remove('active');
+  }
+
+  registerBtn.addEventListener('click', function () {
+    registerModal.classList.remove('closed');
+    overlay.classList.add('active');
+  });
+
+  if (registerCloseBtn) {
+    registerCloseBtn.addEventListener('click', registerModalCloseFunc);
+  }
+
+  if (registerCloseOverlay) {
+    registerCloseOverlay.addEventListener('click', registerModalCloseFunc);
+  }
+}
+
+// registration form handling
+if (registerForm) {
+  registerForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    
+    const formData = new FormData(this);
+    const formProps = Object.fromEntries(formData);
+    
+    // Basic validation
+    if (formProps.password !== formProps['confirm-password']) {
+      alert('Passwords do not match!');
+      return;
+    }
+    
+    if (formProps.password.length < 6) {
+      alert('Password must be at least 6 characters long!');
+      return;
+    }
+    
+    if (!formProps.terms) {
+      alert('Please accept the Terms & Conditions');
+      return;
+    }
+    
+    // Here you would typically send the data to your backend
+    console.log('Registration data:', {
+      fullname: formProps.fullname,
+      email: formProps.email,
+      newsletter: formProps.newsletter === 'on'
+    });
+    
+    // Show success message
+    alert('Registration successful! Welcome to Anon.');
+    
+    // Close modal and reset form
+    registerModal.classList.add('closed');
+    overlay.classList.remove('active');
+    this.reset();
+  });
+}
+
+// login link functionality
+const loginLink = document.getElementById('login-link');
+if (loginLink) {
+  loginLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    // Close registration modal
+    if (registerModal) {
+      registerModal.classList.add('closed');
+    }
+    // Here you can add functionality to open login modal
+    console.log('Switch to login - implement login modal here');
+  });
+}
+
 // notification toast variables
 const notificationToast = document.querySelector('[data-toast]');
 const toastCloseBtn = document.querySelector('[data-toast-close]');
@@ -74,3 +157,17 @@ for (let i = 0; i < accordionBtn.length; i++) {
   });
 
 }
+
+// Enhanced overlay click handler to close all modals
+overlay.addEventListener('click', function () {
+  // Close all modals
+  const modals = document.querySelectorAll('.modal');
+  modals.forEach(modal => {
+    modal.classList.add('closed');
+  });
+  // Close mobile menus
+  mobileMenu.forEach(menu => {
+    menu.classList.remove('active');
+  });
+  this.classList.remove('active');
+});
