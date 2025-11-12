@@ -1,0 +1,86 @@
+[
+    {
+        "id": 7,
+        "name": "Casual Men's Black shoes",
+        "price": 34.0,
+        "url": "https://mcp-testing-one.vercel.app/detail/7",
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/shoe-2jpg"
+    },
+    {
+        "id": 8,
+        "name": "Casual Men's Brown shoes",
+        "price": 50.0,
+        "url": "https://mcp-testing-one.vercel.app/detail/8",
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/shoe-3.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Casual Men's Dark shoes",
+        "price": 49.0,
+        "url": "https://mcp-testing-one.vercel.app/detail/9",
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/shoe-4.jpg"
+    },
+    {
+        "id": 11,
+        "name": "Diamond Pearly Pink Hair Clip",
+        "price": 10.0,
+        "url": "https://mcp-testing-one.vercel.app/detail/11",
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/jewellery-2.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Gold Blue Flowery Amulet",
+        "price": 58.0,
+        "url": "https://mcp-testing-one.vercel.app/detail/10",
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/jewellery-1.jpg"
+    },
+    {
+        "id": 13,
+        "name": "Golden Pocket | Hand Watch",
+        "price": 20.0,
+        "url": "https://mcp-testing-one.vercel.app/detail/13",
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/watch-4.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Men Black Jackets",
+        "price": 40.0,
+        "url": "https://mcp-testing-one.vercel.app/detail/3",
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/jacket-3.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Men Blue Jackets",
+        "price": 50.0,
+        "url": "https://mcp-testing-one.vercel.app/detail/4",
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/jacket-4.jpg"
+    },
+    {
+        "id": 1,
+        "name": "Men Brown Winter Leather Jacket",
+        "price": 48.0,
+        "url": "https://mcp-testing-one.vercel.app/detail/1",
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/jacket-1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Men Dark Brown Winter Jacket",
+        "price": 50.0,
+        "url": "https://mcp-testing-one.vercel.app/detail/2",
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/jacket-2.jpg"
+    },
+    {
+        "id": 12,
+        "name": "Red Crimson Tiara Necklace",
+        "price": 34.0,
+        "url": "https://mcp-testing-one.vercel.app/detail/12",
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/jewellery-3.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Trekking & Running Shoes - White",
+        "price": 26.0,
+        "url": "https://mcp-testing-one.vercel.app/detail/6",
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/shoe-1.jpg"
+    }
+]
