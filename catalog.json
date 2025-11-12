@@ -4,21 +4,21 @@
         "name": "Casual Men's Black shoes",
         "price": 34.0,
         "url": "https://mcp-testing-one.vercel.app/detail/7",
-        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/shoe-2jpg"
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/shoe-3jpg"
     },
     {
         "id": 8,
         "name": "Casual Men's Brown shoes",
         "price": 50.0,
         "url": "https://mcp-testing-one.vercel.app/detail/8",
-        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/shoe-3.jpg"
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/shoe-2.jpg"
     },
     {
         "id": 9,
         "name": "Casual Men's Dark shoes",
         "price": 49.0,
         "url": "https://mcp-testing-one.vercel.app/detail/9",
-        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/shoe-4.jpg"
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/shoe-1.jpg"
     },
     {
         "id": 11,
@@ -81,6 +81,6 @@
         "name": "Trekking & Running Shoes - White",
         "price": 26.0,
         "url": "https://mcp-testing-one.vercel.app/detail/6",
-        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/shoe-1.jpg"
+        "imgUrl": "https://mcp-testing-one.vercel.app/assets/images/products/shoe-4.jpg"
     }
 ]
