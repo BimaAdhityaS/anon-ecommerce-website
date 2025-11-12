@@ -251,7 +251,7 @@ body::-webkit-scrollbar-thumb:hover {
   visibility: hidden;
   pointer-events: none;
   z-index: 10;
-  animation: popup 0.5s ease-in-out 2s forwards;
+  animation: popup 0.5s ease-in-out;
 }
 
 @keyframes popup {
@@ -295,7 +295,7 @@ body::-webkit-scrollbar-thumb:hover {
   border-radius: var(--border-radius-md);
   overflow: hidden;
   z-index: 2;
-  animation: scaleUp 0.1s ease-in-out 2s forwards;
+  animation: scaleUp 0.1s ease-in-out;
 }
 
 @keyframes scaleUp {
