@@ -2799,6 +2799,25 @@ footer {
     margin-bottom: 0;
   }
 
+  .quantity-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  .quantity-input {
+    width: 70px;
+    padding: 5px;
+    font-size: 1rem;
+  }
+
+  .stock-info {
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+
 }
 
 

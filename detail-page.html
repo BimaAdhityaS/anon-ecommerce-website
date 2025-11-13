@@ -581,6 +581,7 @@
                 <div class="quantity-selector">
                     <span class="quantity-label">Quantity:</span>
                     <input type="number" class="quantity-input" value="1" min="1" max="10" />
+                    <span class="stock-info"></span>
                 </div>
 
                 <div class="action-buttons">
@@ -617,17 +618,15 @@
         const id = pathParts[2];
 
         document.addEventListener("DOMContentLoaded", async () => {
-            // === Get ID from URL path ===
-            const pathParts = window.location.pathname.split("/");
-            const id = parseInt(pathParts[2]);
-            console.log("🆔 Product ID:", id);
-
-            // === Fetch catalog data ===
             try {
                 const response = await fetch("/catalog.json");
                 if (!response.ok) throw new Error("Failed to load catalog.json");
 
                 const catalog = await response.json();
+
+                // You must have the product ID (e.g., from query string)
+                const urlParams = new URLSearchParams(window.location.search);
+                const id = urlParams.get("id"); // Example: ?id=P001
 
                 // Find product by ID
                 const product = catalog.find(item => item.id === id);
@@ -644,13 +643,50 @@
                 document.getElementById("main-product-image").src = product.imgUrl;
                 document.getElementById("main-product-image").alt = product.name;
 
-                // Optional: log to confirm
-                console.log("✅ Loaded product:", product);
+                // === Quantity and Stock display ===
+                const quantityInput = document.querySelector(".quantity-input");
+                const stockInfo = document.querySelector(".stock-info");
+                const addToCartBtn = document.querySelector(".btn-add-to-cart");
 
+                if (quantityInput && stockInfo) {
+                    const stock = product.stock ?? 0;
+                    quantityInput.max = stock > 0 ? stock : 1;
+                    quantityInput.value = stock > 0 ? 1 : 0;
+
+                    // Update stock info text
+                    const updateStockInfo = () => {
+                        const selectedQty = parseInt(quantityInput.value) || 0;
+                        const remaining = Math.max(stock - selectedQty, 0);
+
+                        if (stock <= 0) {
+                            stockInfo.textContent = "Out of stock";
+                            stockInfo.style.color = "red";
+                            quantityInput.disabled = true;
+                            addToCartBtn.disabled = true;
+                        } else {
+                            stockInfo.textContent = `Available stock: ${remaining} / ${stock}`;
+                            stockInfo.style.color = remaining > 2 ? "green" : "orange";
+                            quantityInput.disabled = false;
+                            addToCartBtn.disabled = false;
+                        }
+                    };
+
+                    // Initialize and listen for changes
+                    updateStockInfo();
+                    quantityInput.addEventListener("input", () => {
+                        if (quantityInput.value > stock) quantityInput.value = stock;
+                        if (quantityInput.value < 1) quantityInput.value = 1;
+                        updateStockInfo();
+                    });
+                }
+
+                // Optional Salesforce tracking
                 if (window.SalesforceInteractions && SalesforceInteractions.gotoPage) {
                     console.log("🔁 Triggering SalesforceInteractions.gotoPage()");
                     SalesforceInteractions.gotoPage();
                 }
+
+                console.log("✅ Loaded product:", product);
 
             } catch (error) {
                 console.error("Error fetching catalog:", error);
