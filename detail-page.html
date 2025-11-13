@@ -623,11 +623,9 @@
                 if (!response.ok) throw new Error("Failed to load catalog.json");
 
                 const catalog = await response.json();
-                console.log(catalog)
 
-                // You must have the product ID (e.g., from query string)
-                const urlParams = new URLSearchParams(window.location.search);
-                const id = urlParams.get("id"); // Example: ?id=P001
+                const pathParts = window.location.pathname.split("/");
+                const id = pathParts[pathParts.length - 1]; // "4"
 
                 // Find product by ID
                 const product = catalog.find(item => item.id === id);
