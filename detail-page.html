@@ -697,6 +697,52 @@
     `;
             }
         });
+
+        function showNotification(message, redirectUrl = "/", delay = 2000) {
+            // Create notification element
+            const notification = document.createElement("div");
+            notification.textContent = message;
+            notification.style.position = "fixed";
+            notification.style.bottom = "20px";
+            notification.style.right = "20px";
+            notification.style.padding = "16px 20px";
+            notification.style.backgroundColor = "hsl(353, 100%, 78%)";
+            notification.style.color = "#fff";
+            notification.style.borderRadius = "6px";
+            notification.style.boxShadow = "0 3px 8px rgba(0,0,0,0.2)";
+            notification.style.zIndex = "1000";
+            notification.style.fontWeight = "500";
+            notification.style.transition = "opacity 0.4s ease";
+            notification.style.opacity = "1";
+            document.body.appendChild(notification);
+
+            // Hide and redirect
+            setTimeout(() => {
+                notification.style.opacity = "0";
+                setTimeout(() => {
+                    notification.remove();
+                    window.location.href = redirectUrl;
+                }, 400);
+            }, delay);
+        }
+
+        // === Add click listeners ===
+        document.addEventListener("DOMContentLoaded", () => {
+            const btnPurchase = document.getElementById("btn-purchase");
+            const btnCart = document.getElementById("btn-cart");
+
+            if (btnPurchase) {
+                btnPurchase.addEventListener("click", () => {
+                    showNotification("✅ Purchase successful! Redirecting...", "/");
+                });
+            }
+
+            if (btnCart) {
+                btnCart.addEventListener("click", () => {
+                    showNotification("🛒 Added to cart! Redirecting...", "/");
+                });
+            }
+        });
     </script>
 </body>
 
