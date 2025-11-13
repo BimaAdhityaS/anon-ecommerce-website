@@ -624,16 +624,18 @@
 
                 const catalog = await response.json();
 
+                // === Get ID from URL path ===
+                // Example: /detail/4 → id = 4 (number)
                 const pathParts = window.location.pathname.split("/");
-                const id = pathParts[pathParts.length - 1]; // "4"
-                console.log(id)
+                const id = Number(pathParts[pathParts.length - 1]); // Convert to number
 
-                // Find product by ID
+                // Find product by numeric ID
                 const product = catalog.find(item => item.id === id);
                 if (!product) {
                     document.querySelector(".product-details-container").innerHTML = `
         <h2 style="text-align:center; margin:40px 0;">Product not found.</h2>
       `;
+                    console.warn(`⚠️ Product ID ${id} not found in catalog`);
                     return;
                 }
 
@@ -649,11 +651,11 @@
                 const addToCartBtn = document.querySelector(".btn-add-to-cart");
 
                 if (quantityInput && stockInfo) {
-                    const stock = product.stock ?? 0;
+                    const stock = product.inventoryCount ?? 0;
                     quantityInput.max = stock > 0 ? stock : 1;
                     quantityInput.value = stock > 0 ? 1 : 0;
 
-                    // Update stock info text
+                    // Function to update stock text dynamically
                     const updateStockInfo = () => {
                         const selectedQty = parseInt(quantityInput.value) || 0;
                         const remaining = Math.max(stock - selectedQty, 0);
@@ -671,7 +673,7 @@
                         }
                     };
 
-                    // Initialize and listen for changes
+                    // Initialize and update on input
                     updateStockInfo();
                     quantityInput.addEventListener("input", () => {
                         if (quantityInput.value > stock) quantityInput.value = stock;
