@@ -86,15 +86,18 @@
           </div>
 
           <div class="form-group">
-            <input type="text" name="fullname" class="email-field" id="register-name" placeholder="Full Name" required />
+            <input type="text" name="fullname" class="email-field" id="register-name" placeholder="Full Name"
+              required />
           </div>
 
           <div class="form-group">
-            <input type="email" name="email" class="email-field" id="register-email" placeholder="Email Address" required />
+            <input type="email" name="email" class="email-field" id="register-email" placeholder="Email Address"
+              required />
           </div>
 
           <div class="form-group">
-            <input type="text" name="phone" class="email-field" id="register-phone" placeholder="Phone Number" required />
+            <input type="text" name="phone" class="email-field" id="register-phone" placeholder="Phone Number"
+              required />
           </div>
 
           <div class="form-group">
@@ -2457,6 +2460,29 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    function updateCartCount() {
+      try {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const uniqueCount = cart.length; // number of unique products
+        const countSpan = document.getElementById("cart-count");
+        if (countSpan) countSpan.textContent = uniqueCount;
+      } catch (e) {
+        console.error("Failed to update cart count:", e);
+      }
+    }
+
+    // Run once when the page loads
+    document.addEventListener("DOMContentLoaded", updateCartCount);
+
+    // Also update whenever cart changes (listen to storage events for other tabs)
+    window.addEventListener("storage", function (e) {
+      if (e.key === "cart") updateCartCount();
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+  </script>
 </body>
 
 </html>
